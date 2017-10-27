@@ -86,6 +86,10 @@ Component.TextField = class extends Elemental {
     }
   }
 
+  onStateChange(stateName, newValue) {
+    this.render();
+  }
+
   processSignal(signal, value, origin) {
     switch (signal) {
       case 'PREVIEW_CHANGED':
@@ -113,18 +117,6 @@ Component.TextField = class extends Elemental {
     this.setState('length', parts.input.value.length);
   }
 
-  renderPreview(showPreview) {
-    let parts = this.parts;
-    this.removeAllChildren();
-
-    if (!showPreview) {
-      this.add(parts.label).add(parts.input);
-    } else {
-      this.add(parts.rendered);
-    }
-    return showPreview;
-  }
-
   renderLabel(label) {
     this.parts.label.innerText = label;
     return label;
@@ -141,31 +133,24 @@ Component.TextField = class extends Elemental {
     return placeholder;
   }
 
-  renderState(stateName, newValue) {
-    switch (stateName) {
-      case 'showPreview':
-        this.renderPreview(newValue);
-        break;
-      case 'label':
-        this.renderLabel(newValue);
-        break;
-      case 'length':
-        this.renderLength(newValue);
-        break;
-      case 'placeholder':
-        this.renderPlaceholder(newValue);
-        break;
-      case 'value':
-        this.renderValue(newValue);
-      default:
-        this.render();
+  renderShowPreview(showPreview) {
+    let parts = this.parts;
+    this.removeAllChildren();
+
+    if (!showPreview) {
+      this.add(parts.label).add(parts.input);
+    } else {
+      this.add(parts.rendered);
     }
+    return showPreview;
   }
 
   renderValue(value) {
     let key = this.getState('key');
     let signalValue = this.states.key ? { [key]: value } : value;
     this.signalParent('VALUE_CHANGED', signalValue);
+    this.render();
+
     return value;
   }
 

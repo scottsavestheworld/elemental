@@ -61,16 +61,4 @@ Module.Menu = class extends Elemental {
 
     this.signalParent('CONTEXT_CHANGED', newValue);
   }
-
-  renderState(stateName, newValue, oldValue) {
-    switch (stateName) {
-      case 'layout':
-        this.renderLayout(newValue, oldValue);
-      break;
-      case 'context':
-        this.renderContext(newValue, oldValue);
-      break;
-      default:
-    }
-  }
 };

@@ -70,18 +70,6 @@ Component.NestedField = class extends Elemental {
     this.parts.head.setState('value', !isExpanded);
   }
 
-  renderState(stateName, newValue, oldValue) {
-    switch (stateName) {
-      case 'isExpanded':
-        this.renderIsExpanded(newValue);
-        break;
-      case 'value':
-        this.renderValue(newValue);
-        break;
-      default:
-    }
-  }
-
   renderValue(newValue) {
     let key = this.getState('key');
     this.signalParent('VALUE_CHANGED', { [key]: newValue });

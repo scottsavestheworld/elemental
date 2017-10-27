@@ -60,18 +60,6 @@ Module.App = class extends Elemental {
     $E.renderLayout(this, newLayout, oldLayout);
   }
 
-  renderState(stateName, newValue, oldValue) {
-    switch (stateName) {
-      case 'context':
-        this.renderContext(newValue, oldValue);
-      break;
-      case 'screen':
-        this.renderScreen(newValue, oldValue);
-      break;
-      default:
-    }
-  }
-
   render() {
   }
 }

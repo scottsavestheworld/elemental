@@ -75,6 +75,10 @@ Component.TextArea = class extends Elemental {
     }, parts.input);
   }
 
+  onStateChange(stateName, newValue, oldValue) {
+    this.render();
+  }
+
   processSignal(signal, value, origin) {
     switch (signal) {
       case 'PREVIEW_CHANGED':
@@ -103,18 +107,6 @@ Component.TextArea = class extends Elemental {
 
   renderAutoResize(isToBeAutoResized) {
     this.setAttribute('rows', isToBeAutoResized ? '1' : '', this.parts.input);
-  }
-
-  renderPreview(showPreview) {
-    let parts = this.parts;
-    this.removeAllChildren();
-
-    if (!showPreview) {
-      this.add(parts.label).add(parts.input);
-    } else {
-      this.add(parts.rendered);
-    }
-    return showPreview;
   }
 
   renderLabel(label) {
@@ -166,40 +158,30 @@ Component.TextArea = class extends Elemental {
     return newLength;
   }
 
-  renderState(stateName, newValue, oldValue) {
-    switch (stateName) {
-      case 'autoResize':
-        this.renderAutoResize(newValue);
-        break;
-      case 'showPreview':
-        this.renderPreview(newValue);
-        break;
-      case 'label':
-        this.renderLabel(newValue);
-        break;
-      case 'length':
-        this.renderLength(newValue, oldValue);
-        break;
-      case 'placeholder':
-        this.renderPlaceholder(newValue);
-        break;
-      case 'value':
-        this.renderValue(newValue);
-      default:
-        this.render();
-    }
-  }
-
   renderPlaceholder(placeholder) {
     this.setAttribute('placeholder', placeholder, this.parts.input);
     this.setToggle('empty', placeholder ? false : true);
     return placeholder;
   }
 
+  renderShowPreview(showPreview) {
+    let parts = this.parts;
+    this.removeAllChildren();
+
+    if (!showPreview) {
+      this.add(parts.label).add(parts.input);
+    } else {
+      this.add(parts.rendered);
+    }
+    return showPreview;
+  }
+
   renderValue(value) {
     let key = this.getState('key');
     let signalValue = this.states.key ? { [key]: value } : value;
     this.signalParent('VALUE_CHANGED', signalValue);
+    this.render();
+
     return value;
   }
 

@@ -99,30 +99,12 @@ createEvents() {
     }
   }
 
-  renderState(stateName, newValue, oldValue) {
-    switch (stateName) {
-      case 'query':
-        this.submitQuery(newValue);
-        break;
-      case 'placeholder':
-        this.renderPlaceholder(newValue);
-        break;
-      case 'results':
-        this.renderResults(newValue, oldValue);
-        break;
-      case 'value':
-        this.renderValue(newValue, oldValue);
-        break;
-      default:
-    }
-  }
-
   renderValue(value) {
     this.parts.input.value = value;
     this.setState('query', value);
   }
 
-  submitQuery(query) {
+  renderQuery(query) {
     if (query.length >= this.states.queryMinimum) {
       this.setToggle('searching', true);
       if (typeof this.states.queryTarget === 'function') {

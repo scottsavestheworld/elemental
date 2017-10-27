@@ -210,6 +210,10 @@ const Elemental = class {
     return this;
   }
 
+  onStateChange(stateName, newValue, oldValue) {
+    // Is called after state updates and render[StateName]() does not exist
+  }
+
   off(event, handler, element) {
     if (!element instanceof HTMLElement) {
       $E.warn(
@@ -288,10 +292,14 @@ const Elemental = class {
   render() {
     // Render the entire Elemental
   }
-  
-  renderState(stateName, newValue, oldValue) {
-    // Render the state changes
-  }
+
+/*render[StateName]() {
+    When a state is updated, this.render[StateName]() will be called. For example
+    this.setState('value', 'somevalue') will update the 'value' state, and then call this.renderValue(newValue, oldValue)
+    If the this.renderValue() method does not exist, the default this.onStateChange(stateName, newValue, oldValue) will be called.
+
+    ** Note, the first letter of the state name in this.render[StateName]() name will be capitalized, even if the state name is not.
+  }*/
 
   reset() {
     this.forEachPart('reset');
@@ -456,8 +464,13 @@ const Elemental = class {
       }
       if (states[stateName] !== newValue) {
         let oldValue = states[stateName];
+        let renderMethod = 'render' + $E.capitalize(stateName);
         states[stateName] = newValue;
-        this.renderState(stateName, newValue, oldValue);
+        if (typeof this[renderMethod] === 'function') {
+          this[renderMethod](newValue, oldValue);
+        } else {
+          this.onStateChange(stateName, newValue, oldValue);
+        }
       }
     }
     return this;

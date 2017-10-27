@@ -23,13 +23,4 @@ Component.Text = class extends Elemental {
   renderValue(newValue, oldValue) {
     this.element.innerText = newValue;
   }
-
-  renderState(stateName, newValue, oldValue) {
-    switch (stateName) {
-      case 'value':
-        this.renderValue(newValue, oldValue);
-        break;
-      default:
-    }
-  }
 };

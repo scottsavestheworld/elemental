@@ -29,6 +29,10 @@ Component.Button = class extends Elemental {
     });
   }
 
+  onStateChange(stateName, newValue, oldValue) {
+    this.render();
+  }
+
   render() {
     if (this.wasInvoked) {
       const partNames = this.states.layout;
@@ -68,22 +72,6 @@ Component.Button = class extends Elemental {
     this.parts.text.nodeValue = newValue;
     if (!newValue || !oldValue) {
       this.render();
-    }
-  }
-
-  renderState(stateName, newValue, oldValue) {
-    switch (stateName) {
-      case 'image':
-        this.renderImage(newValue, oldValue);
-        break;
-      case 'target':
-        this.renderTarget(newValue, oldValue);
-        break;
-      case 'text':
-        this.renderText(newValue, oldValue);
-        break;
-      default:
-        this.render();
     }
   }
 };

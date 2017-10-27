@@ -160,24 +160,13 @@ Module.Editor = class extends Elemental {
     }
   }
 
-  renderPreview(showPreview) {
-    this.signalChildren('PREVIEW_CHANGED', showPreview);
-    this.setToggle('preview', showPreview);
-    return this;
+  renderParseHTML(newValue, oldValue) {
+    this.signalChildren('PARSE_HTML', newValue);
   }
 
-  renderState(stateName, newValue, oldValue) {
-    switch (stateName) {
-      case 'context':
-        this.renderContext(newValue, oldValue);
-        break;
-      case 'showPreview':
-        this.renderPreview(newValue, oldValue);
-        break;
-      case 'parseHTML':
-        this.signalChildren('PARSE_HTML', newValue);
-      default:
-    }
+  renderShowPreview(showPreview) {
+    this.signalChildren('PREVIEW_CHANGED', showPreview);
+    this.setToggle('preview', showPreview);
     return this;
   }
 

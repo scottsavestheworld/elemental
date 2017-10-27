@@ -24,13 +24,4 @@ Component.Image = class extends Elemental {
   renderSource(newValue, oldValue) {
     this.element.src = newValue;
   }
-
-  renderState(stateName, newValue, oldValue) {
-    switch (stateName) {
-      case 'source':
-        this.renderSource(newValue, oldValue);
-        break;
-      default:
-    }
-  }
 };
