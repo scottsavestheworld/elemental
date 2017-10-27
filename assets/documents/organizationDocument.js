@@ -1,0 +1,23 @@
+Documents.organizations = {
+  "ID":"594d54a04a18b70005aacfdb",
+  "hasExperience":true,
+  "eCommerce":false,
+  "name":"SnowEx",
+  "type":"Global Brand",
+  "status":"active",
+  "externalID":"se",
+  "domain":"snowexproducts.com",
+  "subdomain":"www",
+  "hostname":"www.snowexproducts.com",
+  "isTrunk":true,
+  "trunkID":"594d54a04a18b70005aacfdb",
+  "trunkPrefix":"DDSX",
+  "version":28,
+  "created":"2017-06-23T17:49:20.116Z",
+  "createdBy":"Seth Lowie",
+  "createdByID":"5873c00d03ab5f00019ea195",
+  "modified":"2017-08-18T14:26:43.59Z",
+  "lastModifiedBy":"William Volpe",
+  "lastModifiedByUserID":"5664555065e7424a75000005",
+  "lastModifiedByEID":"0_api-1692293218-8vz78_27900"
+}

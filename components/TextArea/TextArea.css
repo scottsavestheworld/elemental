@@ -1,0 +1,61 @@
+.TextArea {
+  position: relative;
+  padding-top: 24px;
+}
+
+.TextArea label {
+  position: absolute;
+  display: block;
+  top: 24px;
+  left: 0px;
+  font-size: 1.3em;
+  color: #2AD;
+  pointer-events: none;
+  z-index: 1;
+  transition: top .3s, left .3s, font-size .3s;
+}
+
+.TextArea.is-empty label {
+  top: 61px;
+  left: 13px;
+  font-size: 1.6em;
+  color: #9FAFBA;
+}
+
+.TextArea textarea {
+  display: block;
+  margin-top: 24px;
+  width: 100%;
+  min-height: 160px;
+  max-height: 400px;
+  padding: 12px;
+  font-size: 1.6em;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0);
+  outline: none;
+  resize: none;
+  transition: background-color .3s, border .3s, box-shadow .3s;
+}
+
+.TextArea:hover textarea {
+  background-color: rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.0), 0px 0px 0px rgba(0, 0, 0, 0);  
+}
+
+.TextArea.is-focused textarea {
+  background-color: #FFF;
+  border: 1px solid #2AD;
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.is-preview .TextArea {
+    padding-top: 0px;
+}
+
+.TextArea > div {
+  font-size: 1.6em;
+}

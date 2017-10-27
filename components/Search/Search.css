@@ -1,0 +1,60 @@
+.Search {
+  margin-top: 24px;
+  display: flex;
+  height: 40px;
+  align-items: center;
+  min-width: 200px;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0);
+  transition: background-color .3s, border .3s, box-shadow .3s;
+}
+
+.Search:hover {
+  background-color: rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.0), 0px 0px 0px rgba(0, 0, 0, 0);  
+}
+
+.Search.is-focused {
+  background-color: #FFF;
+  border: 1px solid #2AD;
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.Search:before {
+  opacity: .5;
+  content: '';
+  display: block;
+  flex: 0 48px;
+  width: 20px;
+  height: 20px;
+  background-image: url('../../assets/images/search.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity .3s;
+}
+
+.Search.is-searching:before {
+  width: 24px;
+  height: 24px;
+  background-image: url('../../assets/images/search_spinner.svg');
+  animation: clockwise 1s linear infinite;
+}
+
+.Search.is-focused:before {
+  opacity: 1;
+}
+
+.Search input {
+  flex: 1;
+  display: block;
+  font-size: 1.6em;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+  background: none;
+  outline: none;
+  border: none;
+  z-index: 0;
+}

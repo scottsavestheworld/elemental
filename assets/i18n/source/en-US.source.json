@@ -1,0 +1,13 @@
+{
+  "application.somepath.sometext" : "some application text",
+  "application.somepath.sometext1" : "some application text1",
+  "application.somepath.sometext2" : "some application text2",
+
+  "content.somepath.sometext" : "some content text",
+  "content.somepath.sometext1" : "some content text1",
+  "content.somepath.sometext2" : "some content text2",
+
+  "ecommerce.somepath.sometext" : "some ecommerce text",
+  "ecommerce.somepath.sometext1" : "some ecommerce text1",
+  "ecommerce.somepath.sometext2" : "some ecommerce text2"
+}

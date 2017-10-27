@@ -1,0 +1,82 @@
+.TextField {
+  position: relative;
+  margin-top: 24px;
+  height: 48px;
+}
+
+.TextField label {
+  position: absolute;
+  display: block;
+  bottom: 36px;
+  font-size: 1.2em;
+  color: #2AD;
+  pointer-events: none;
+  z-index: 1;
+  transition: bottom .3s, font-size .3s;
+}
+
+.TextField.is-empty label {
+  bottom: 6px;
+  font-size: 1.6em;
+  color: #9FAFBA;
+}
+
+.TextField input {
+  display: block;
+  position: absolute;
+  bottom: 6px;
+  width: 100%;
+  padding: 0px;
+  font-size: 1.6em;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+  background: none;
+  outline: none;
+  border: none;
+  z-index: 0;
+}
+
+.TextField:before {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, .15);
+  pointer-events: none;
+}
+
+
+.TextField:after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 0%;
+  height: 1px;
+  background-color: #2AD;
+  pointer-events: none;
+  transition: left .3s, width .3s;
+}
+
+.TextField.is-focused:after {
+  left: 0%;
+  width: 100%;
+}
+
+.is-preview .TextField {
+  margin-top: 0px;
+  height: auto;
+}
+
+.is-preview .TextField:before {
+  display: none;
+}
+
+.is-preview .TextField.is-focused:after {
+  display: none;
+}
+
+.TextField > div {
+  font-size: 1.6em;
+}
