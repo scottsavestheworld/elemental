@@ -1,0 +1,32 @@
+.Checkbox {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 1.6em;
+  outline: none;
+}
+
+.Checkbox:focus div {
+  border: 1px solid #2AF;
+}
+
+.Checkbox.is-checked div {
+  background-color: #2AF;
+}
+
+.Checkbox div {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  background-color: #F4F4F4;
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+.Checkbox label {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 12px;
+  color: #555;
+}

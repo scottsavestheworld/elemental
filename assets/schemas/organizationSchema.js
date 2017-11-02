@@ -29,5 +29,18 @@ Schemas.organizations = {
       "presentation": "text",
       "isRequired" : true,
     },
+    {
+      "label": "Organization Description",
+      "key": "description",
+      "primitive": "string",
+      "presentation": "textarea",
+      "signal": "DO_SOMETHING",
+    },
+    {
+      "label": "Organization is Active",
+      "key": "status",
+      "primitive": "boolean",
+      "presentation": "checkbox"
+    }
   ]
 }

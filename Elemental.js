@@ -338,8 +338,6 @@ const Elemental = class {
   setOwner(owner) {
     if (owner && owner.isElemental) {
       this.owner = owner;
-    } else {
-      this.owner = null;
     }
     return this;
   }

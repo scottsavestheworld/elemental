@@ -308,38 +308,38 @@ Schemas.content = {
         },
         
 
-        {
-          "label": "Nested Nested",
-          "key": "nestedNested",
-          "checksum": null,
-          "primitive": "nested",
-          "collection": null,
-          "position": null,
-          "presentation": "nested",
-          "overRides": {
-            "allow": false,
-            "overWriteDescendants": null,
-            "allowedOrganizationTypes": null,
-            "restrictedOrganizationTypes": null,
-            "restrictions": null
-          },
-          "restrictions": null,
-          "fields": [
-            {
-              "label": "Double Nested Content",
-              "key": "nestedNestedField",
-              "checksum": null,
-              "primitive": "string",
-              "collection": null,
-              "position": null,
-              "presentation": "text",
-              "overRides": null,
-              "restrictions": null,
-              "fields": null,
-              "template": null
-            },
-          ],
-        },
+        // {
+        //   "label": "Nested Nested",
+        //   "key": "nestedNested",
+        //   "checksum": null,
+        //   "primitive": "nested",
+        //   "collection": null,
+        //   "position": null,
+        //   "presentation": "nested",
+        //   "overRides": {
+        //     "allow": false,
+        //     "overWriteDescendants": null,
+        //     "allowedOrganizationTypes": null,
+        //     "restrictedOrganizationTypes": null,
+        //     "restrictions": null
+        //   },
+        //   "restrictions": null,
+        //   "fields": [
+        //     {
+        //       "label": "Double Nested Content",
+        //       "key": "nestedNestedField",
+        //       "checksum": null,
+        //       "primitive": "string",
+        //       "collection": null,
+        //       "position": null,
+        //       "presentation": "text",
+        //       "overRides": null,
+        //       "restrictions": null,
+        //       "fields": null,
+        //       "template": null
+        //     },
+        //   ],
+        // },
 
 
         {

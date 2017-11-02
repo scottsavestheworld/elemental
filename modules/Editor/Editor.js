@@ -72,6 +72,8 @@ Module.Editor = class extends Elemental {
       value: value || '',
     };
     switch (field.presentation) {
+      case 'checkbox':
+        return Component('Checkbox', essence);
       case 'nested':
         return this.createNestedField(field, key, value);
       case 'markdown':
