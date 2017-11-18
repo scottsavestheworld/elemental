@@ -14,6 +14,10 @@ Schemas.content = {
   "lastModifiedByID": null,
   "fields": [
     {
+      "key": "contentHeader",
+      "presentation": "heading",
+    },
+    {
       "label": "Title",
       "key": "title",
       "checksum": null,

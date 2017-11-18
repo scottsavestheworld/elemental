@@ -196,10 +196,13 @@ const Elemental = class {
   }
 
   on(events, handler, element = this.element) {
+    if (typeof element === 'string') {
+      element = this.parts[element];
+    }
     if (!element instanceof HTMLElement) {
       $E.warn(
         `Elemental.on: Attempting to set an event listener for ${events} on a non-DOM element. 
-        Make sure the supplied element is a DOM element and not an Elemental.`
+        Make sure the supplied element is the name of a part in this Elemental or a DOM element.`
       );
       return this;
     }
@@ -215,10 +218,13 @@ const Elemental = class {
   }
 
   off(event, handler, element) {
+    if (typeof element === 'string') {
+      element = this.parts[element];
+    }
     if (!element instanceof HTMLElement) {
       $E.warn(
         `Elemental.off: Attempting to remove an event listener for ${events} on a non-DOM element. 
-        Make sure the supplied element is a DOM element and not an Elemental.`
+        Make sure the supplied element is the name of a part in this Elemental or a DOM element.`
       );
       return this;
     }
@@ -507,21 +513,21 @@ const Elemental = class {
   signal(target, signal, value, origin) {
     let signalOrigin = origin || this;
     if ($E.object(target, false) && target.isElemental) {
-      target.receiveSignal(signal, value, true, origin);
+      target.receiveSignal(signal, value, true, signalOrigin);
     }
     return this;
   }
 
   signalChildren(signal, value, stopPropagation, origin) {
     let signalOrigin = origin || this;
-    this.forEachChild('receiveSignal', signal, value, stopPropagation, origin, 'Children');
+    this.forEachChild('receiveSignal', signal, value, stopPropagation, signalOrigin, 'Children');
     return this;
   }
 
   signalOwner(signal, value, stopPropagation, origin) {
     if (this.owner && this.owner.isElemental) {
       let signalOrigin = origin || this;
-      this.owner.receiveSignal(signal, value, stopPropagation, origin, 'Owner');
+      this.owner.receiveSignal(signal, value, stopPropagation, signalOrigin, 'Owner');
     }
     return this;
   }
@@ -529,14 +535,14 @@ const Elemental = class {
   signalParent(signal, value, stopPropagation, origin) {
     if (this.parent && this.parent.isElemental) {
       let signalOrigin = origin || this;
-      this.parent.receiveSignal(signal, value, stopPropagation, origin, 'Parent');
+      this.parent.receiveSignal(signal, value, stopPropagation, signalOrigin, 'Parent');
     }
     return this;
   }
 
   signalParts(signal, value, stopPropagation, origin) {
     let signalOrigin = origin || this;
-    this.forEachPart('receiveSignal', signal, value, stopPropagation, origin, 'Parts');
+    this.forEachPart('receiveSignal', signal, value, stopPropagation, signalOrigin, 'Parts');
     return this;
   }
 

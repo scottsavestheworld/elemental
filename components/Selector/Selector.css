@@ -1,0 +1,80 @@
+.Selector {
+  display: inline-block;  
+  position: relative;
+  margin: 24px 24px 0px 0px;
+  width: calc(50% - 24px);
+  height: 64px;
+}
+
+.Selector label {
+  position: absolute;
+  display: block;
+  top: 0px;
+  left: 0px;
+  font-size: 1.3em;
+  color: #2AD;
+}
+
+.Selector span {
+  display: block;
+  position: relative;
+  top: 24px;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0px 44px 0px 12px;
+  font-size: 1.6em;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-size: 20px;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0);
+  outline: none;
+  cursor: pointer;
+  transition: background-color .3s, border .3s, box-shadow .3s;
+}
+
+.Selector:hover span {
+  background-color: rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.0), 0px 0px 0px rgba(0, 0, 0, 0);  
+}
+
+.Selector span:focus {
+  background-color: #FFF;
+  border: 1px solid #2AD;
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.Selector span:after {
+    position: absolute;
+    right: 12px;
+    content: "\276F";
+    font-weight: 600;
+    color: #999;
+    transform: rotate(90deg);
+    transition: transform .2s, color .2s;
+}
+
+.Selector.is-focused span:after {
+  color: #2AD;
+  transform: rotate(180deg);
+}
+
+.Selector .Options {
+  display: none;
+  top: 64px;
+  left: 0px;
+  max-width: 400px;
+  font-size: 1.6em;
+}
+
+.Selector.is-focused .Options {
+  display: block;
+}

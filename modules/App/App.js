@@ -34,8 +34,32 @@ Module.App = class extends Elemental {
       layout   : 'fixed',
       screen   : [ 'editor', 'home', 'list', 'login' ],
     }
+
+    this.signals = {
+      'OFFCLICK' : [],
+    },
   
     this.invoke(essence);
+  }
+
+  createEvents() {
+    this.on('mousedown', (event) => { this.onClick(event) });
+  }
+
+  onClick(event) {
+    for (let signalee of this.signals.OFFCLICK) {
+      this.signal(signalee, 'OFFCLICK');
+    }
+  }
+
+  registerOffClick(value, origin) {
+    let index = this.signals.OFFCLICK.indexOf(origin);
+    if (value && index === -1) {
+      this.signals.OFFCLICK.push(origin);
+    }
+    else if (!value && index >= 0) {
+      this.signals.OFFCLICK.splice(index, 1);
+    }
   }
 
   processSignal(signal, value, origin) {
@@ -43,14 +67,17 @@ Module.App = class extends Elemental {
       case 'CONTEXT_CHANGED':
         this.setState('context', value);
         break;
+      case 'REGISTER_OFFCLICK':
+        this.registerOffClick(value, origin);
+        break;
       default:
     }
     return this;
   }
 
-  renderContext(newValue, oldValue) {
-    this.signalParts('CONTEXT_CHANGED', newValue);
-    this.setAttribute('context', newValue);
+  renderContext(context) {
+    this.signalParts('CONTEXT_CHANGED', context);
+    this.setAttribute('context', context);
   }
 
   renderScreen(newValue = '', oldValue = '') {

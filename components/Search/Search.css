@@ -29,7 +29,7 @@
   flex: 0 48px;
   width: 20px;
   height: 20px;
-  background-image: url('../../assets/images/search.svg');
+  background-image: url('images/search_icon.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -39,7 +39,7 @@
 .Search.is-searching:before {
   width: 24px;
   height: 24px;
-  background-image: url('../../assets/images/search_spinner.svg');
+  background-image: url('images/spinner.svg');
   animation: clockwise 1s linear infinite;
 }
 

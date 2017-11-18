@@ -1,51 +1,53 @@
 .NestedField {
   margin-top: 24px;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: #2AD;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0);
-  transition: background-color .6s, box-shadow .6s;
+  border-radius: 6px;
+  background-color: #FFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), 1px 2px 4px rgba(0, 0, 0, 0.15);
+  transition: background-color .3s, border .3s, box-shadow .3s;
 }
 
-.NestedField:hover,
-.NestedField.is-expanded {
-  background-color: rgba(0,0,0,0.06);
-}
+
 
 .NestedField:hover {
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.NestedField:active {
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.0);
-  transition: background-color .3s, box-shadow .3s;
+  background-color: rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.0), 0px 0px 0px rgba(0, 0, 0, 0); 
 }
 
 .NestedField.is-expanded {
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.0);
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.05), 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
 .NestedHead {
   user-select: none;
-  padding: 12px;
+  height: 44px;
+  line-height: 44px;
   text-align: center;
   font-size: 1.8em;
-  color: #FFF;
+  color: #2AD;
   cursor: pointer;
   transition: color .3s;
 }
 
-.NestedField:hover > .NestedHead,
-.NestedField.is-expanded > .NestedHead {
+.NestedHead:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.NestedHead:before {
+  padding: 12px;
+  text-align: center;
+  font-size: 1.8em;
   color: #2AD;
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px;
+  cursor: pointer;
+  transition: color .3s;
 }
 
 .NestedBody {
   display: none;
   padding: 0px 12px;
-  overflow: hidden;
   animation: fadeIn .6s;
 }
 

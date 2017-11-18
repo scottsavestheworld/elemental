@@ -8,9 +8,16 @@ const Component = function (elementalName, ...essence) {
   let elemental = new Component[elementalName](...essence);
   return elemental;
 };
-const $E = {};
+const $E = (tagName, attributes = {}) => {
+  let element = document.createElement(tagName);
+  for (let attributeName in attributes) {
+    element.setAttribute(attributeName, attributes[attributeName]);
+  }
+  return element;
+};
 
 $E.App = null;
+$E.events = {};
 $E.isDebugMode = true;
 
 //--------------------------------------------------------- Layout Builder

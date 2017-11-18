@@ -23,6 +23,7 @@ Documents.content = {
   "indexVerified": false,
   "lastModifiedBy": "Jimmy Johnson",
   "values": {
+    "contentHeader": "Content Editor",
     "teaserDescription": "We offer a wide array of products and accessories!",
     "teaserTitle": "Categories: Find out just what we offer!",
     "title": "CATEGORIES",

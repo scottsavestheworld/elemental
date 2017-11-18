@@ -1,0 +1,31 @@
+.Options {
+  position: absolute;
+  display: block;
+  min-width: 100%;
+  min-height: 48px;
+  max-height: 410px;
+  padding: 10px 0px;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+  background-color: #FFF;
+  border: 1px solid #2AD;
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), 2px 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: auto;
+  margin-bottom: 48px;
+  z-index: 100;
+}
+
+.Options option {
+  padding: 6px 12px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  outline: none;
+}
+
+.Options option:hover,
+.Options option:focus {
+  color: #2AD;
+  background-color: #F4F4F4;
+}

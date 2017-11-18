@@ -40,6 +40,13 @@ Module.Editor = class extends Elemental {
     this.invoke(essence);
   }
 
+  addSchemaEvents(fieldElemental, events = []) {
+    for (let event of events) {
+      fieldElemental.on(event.on, e => { $E.events[this.states.context][event.name](e, fieldElemental) }, event.part);
+    }
+    return this;
+  }
+
   applyChanges(value) {
     let currentDocument = this.getState('document');
     let currentValues = this.getState('documentValues');
@@ -72,14 +79,23 @@ Module.Editor = class extends Elemental {
       value: value || '',
     };
     switch (field.presentation) {
+      case 'autocomplete':
+        essence.type = 'autocomplete';
+        return Component('TextField', essence);
       case 'checkbox':
         return Component('Checkbox', essence);
+      case 'heading': 
+        return Component('Text', essence).setAlias('Heading');
       case 'nested':
         return this.createNestedField(field, key, value);
       case 'markdown':
         essence.showToggles = true;
+        return Component('TextArea', essence);
+      case 'select':
+        essence.options = field.restrictions ? field.restrictions.enums : [];
+        return Component('Selector', essence);
       case 'textarea':
-        return Component('TextArea', essence)
+        return Component('TextArea', essence);
       case 'text':
         return Component('TextField', essence);
       default:
@@ -98,7 +114,9 @@ Module.Editor = class extends Elemental {
 
       for (let field of fields) {
         let value = documentValues[field.key];
-        parts.form.add(this.createField(field, field.key, value));
+        let fieldElemental = this.createField(field, field.key, value);
+        this.addSchemaEvents(fieldElemental, field.events);
+        parts.form.add(fieldElemental);
       }
     }
   }
@@ -111,7 +129,9 @@ Module.Editor = class extends Elemental {
       let group = Component('Block').setAlias('NestedGroup');
       nested.parts.body.add(group);
       for (let field of fields) {
-        group.add(this.createField(field, i + ' ' + field.key, value[field.key]));
+        let fieldElemental = this.createField(field, i + ' ' + field.key, value[field.key]);
+        this.addSchemaEvents(fieldElemental, field.events);
+        group.add(fieldElemental);
       }
       i++;
     }
@@ -120,7 +140,9 @@ Module.Editor = class extends Elemental {
       let group = Component('Block').setAlias('NestedGroup');
       nested.parts.body.add(group);
       for (let field of fields) {
-        group.add(this.createField(field, i + ' ' + field.key));
+        let fieldElemental = this.createField(field, i + ' ' + field.key, value[field.key]);
+        this.addSchemaEvents(fieldElemental, field.events);
+        group.add(fieldElemental);
       }      
     }
     return nested;

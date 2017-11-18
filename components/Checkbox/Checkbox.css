@@ -1,32 +1,55 @@
 .Checkbox {
-  display: inline-block;
+  display: flex;
   margin-top: 24px;
   font-size: 1.6em;
   outline: none;
-}
-
-.Checkbox:focus div {
-  border: 1px solid #2AF;
-}
-
-.Checkbox.is-checked div {
-  background-color: #2AF;
+  cursor: pointer;
 }
 
 .Checkbox div {
+  flex: 1 0 20px;
+  position: relative;
   display: inline-block;
   vertical-align: middle;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   background-color: #F4F4F4;
   box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
+  overflow: visible;
+  transition: background-color .3s, border .3s, box-shadow .3s;
+}
+
+.Checkbox:hover div  {
+  background-color: rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0.0), 0px 0px 0px rgba(0, 0, 0, 0);  
+}
+
+.Checkbox:focus div {
+  background-color: #FFF;
+  border: 1px solid #2AD;
+  box-shadow: inset 0px 0px 0px rgba(0, 0, 0, 0), 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.Checkbox.is-checked div:after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 4px;
+  left: 4px;
+  width: 10px;
+  height: 10px;
+  background-color: #555;
+  border-radius: 2px;
 }
 
 .Checkbox label {
+  flex: 1 1 100%;
   display: inline-block;
   vertical-align: middle;
   padding-left: 12px;
   color: #555;
+  user-select: none;
 }

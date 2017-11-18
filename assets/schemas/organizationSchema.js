@@ -28,6 +28,9 @@ Schemas.organizations = {
       "primitive": "string",
       "presentation": "text",
       "isRequired" : true,
+      "events": [
+        { on: 'input', name: 'EVENT_NAME' }
+      ]
     },
     {
       "label": "Organization Description",
@@ -40,7 +43,10 @@ Schemas.organizations = {
       "label": "Organization is Active",
       "key": "status",
       "primitive": "boolean",
-      "presentation": "checkbox"
+      "presentation": "checkbox",
+      "events": [
+        { on: 'click', name: 'EVENT_NAME' }
+      ]
     }
   ]
 }

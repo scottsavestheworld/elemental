@@ -52,15 +52,6 @@ Component.TextArea = class extends Elemental {
   createEvents() {
     const parts = this.parts;
 
-    this.on('mousedown', e => {
-      this.parts.input.focus();
-      e.preventDefault();
-    });
-
-    this.on('mousedown', e => { 
-      e.stopPropagation(); 
-    }, parts.input);
-
     this.on('blur', e => {
       this.setToggle('focused', false);
       this.setState('value', parts.input.value);

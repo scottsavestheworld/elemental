@@ -36,6 +36,11 @@
   z-index: 0;
 }
 
+.TextField .Options {
+  top: 100%;
+  left: 0px;
+}
+
 .TextField:before {
   content: '';
   position: absolute;
